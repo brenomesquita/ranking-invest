@@ -52,7 +52,7 @@ export default class App extends Component {
     return (
     <div className="wrapper">
       {this.form(<Login />, "Login", `${this.state.login}`, "btn" )}
-      {this.form(<RegisterService onClick={this.onClick}/>, "Creat Account", `${this.state.register}`, "btn-change" )}
+      {this.form(<RegisterService />, "Creat Account", `${this.state.register}`, "btn-change" )}
     </div>
   );
   }

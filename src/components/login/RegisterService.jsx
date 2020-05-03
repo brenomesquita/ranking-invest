@@ -4,12 +4,22 @@ const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
 
-const formValid = formErrors => {
+
+const formValid = ({ formErrors, ...rest }) => {
   let valid = true;
 
-  Object.values(formErrors).forEach(val=>val.length>0&&(valid===false));
-  return valid
-}
+  // validate form errors being empty
+  Object.values(formErrors).forEach(val => {
+    val.length > 0 && (valid = false);
+  });
+
+  // validate the form was filled out
+  Object.values(rest).forEach(val => {
+    val === null && (valid = false);
+  });
+
+  return valid;
+};
 
 export default class RegisterService extends Component {
   constructor(props){
@@ -21,45 +31,53 @@ export default class RegisterService extends Component {
       email: null,
       password: null,
       formErrors: {
-        test: "",
         firstName: "",
         lastName: "",
         email: "",
         password: "",
       }
     };
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleSubmit = (accountProps) => {
-    accountProps.preventDefault();
-    if(formValid(this.state.formErrors)){
-      console.log(`${this.state.firstName}`)
-    }else{
-      console.error("error")
+  handleSubmit = e => {
+    e.preventDefault();
+    if (formValid(this.state)) {
+      this.props.history.push("/loged")
+      //console.log(`
+      //  --SUBMITTING--
+      //  First Name: ${this.state.firstName}
+      //  Last Name: ${this.state.lastName}
+      //  Email: ${this.state.email}
+      //  Password: ${this.state.password}
+      //`);
+    } else {
+        window.alert("INVALID ACCOUNT");
     }
   };
 
   handleChange = (events) => {
     events.preventDefault();
     const { name, value } = events.target;
-    let formErros = this.state.formErrors;
-    
+    let { formErrors } = this.state;
+
     switch(name){
       case "firstName":
-        formErros.firstName = value.length<4? "minimuim 3 characters required" : "";
+        formErrors.firstName = value.length<4? "minimuim 3 characters required" : "";
       break;
       case "lastName":
-        formErros.lastName = value.length<4? "minimuim 3 characters required" : "";
+        formErrors.lastName = value.length<4? "minimuim 3 characters required" : "";
       break;
       case "email":
-        formErros.email = emailRegex.test(value)? "" : "Add an valida email";
+        formErrors.email = emailRegex.test(value)? "" : "Add an valida email";
       break;
       case "password":
-        formErros.password = value.length<9? "minimuim 8 numbers required" : "";
+        formErrors.password = value.length<9? "minimuim 8 numbers required" : "";
       break;
+      case "checkbox":
     }
 
-    this.setState({formErros, [name]:value}, ()=>console.log(this.state.formErrors))
+    this.setState({formErrors, [name]:value})
   }
 
   handleInputChange = (test, clas) => {
@@ -76,7 +94,6 @@ export default class RegisterService extends Component {
   };
 
   creatInputs(classText="sem prop", text="sem prop", typeInput="text"){
-
     const { formErrors } = this.state;
     return(
       <div className={classText}>
