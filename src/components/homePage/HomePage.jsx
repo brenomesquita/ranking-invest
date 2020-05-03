@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 
-export default class UserLoged extends Component {
+export default class HomePage extends Component {
   constructor(props){
     super(props)
     this.state={
@@ -13,12 +13,12 @@ export default class UserLoged extends Component {
   }
   render() {
     if (this.state.redirect) {
-      return <Redirect push to="/homePage" />;
+      return <Redirect push to="/loginRegister" />;
     }
     return (
       <div>
-        loged in
-        <button onClick={this.handleOnClick}>log out</button>
+        <h1>Ranking page</h1>
+        <button onClick={this.handleOnClick}>clik</button>
       </div>
     )
   }
