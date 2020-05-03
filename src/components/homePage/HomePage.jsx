@@ -6,27 +6,21 @@ export default class HomePage extends Component {
   constructor(props){
     super(props)
     this.state={
-      redirectLogin: false,
       navigationIcon: "navigation__icon",
-      redirectRegister: false,
+      redirect: false,
     }
   }
-  handleOnClickLogin = () => {
-    this.setState({redirectLogin: true});
-  }
-  handleOnClickregister = () => {
-    this.setState({redirectRegister: true});
+  
+  handleOnClick = () => {
+    this.setState({redirect: true});
   }
   header = () => {
     let { navigationIcon } =this.state
     navigationIcon==="navigation__icon"? this.setState({navigationIcon:"navigation-open"}) : this.setState({navigationIcon:"navigation__icon"})
   }
   render() {
-    if (this.state.redirectLogin) {
-      return <Redirect push to="/LoginService" />;
-    }
-    if (this.state.redirectRegister) {
-      return <Redirect push to="/RegisterService" />;
+    if (this.state.redirect) {
+      return <Redirect push to="/loginRegister" />;
     }
     return (
       <div>
