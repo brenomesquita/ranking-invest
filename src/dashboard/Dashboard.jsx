@@ -1,47 +1,58 @@
-import React from 'react';
-import StockSelector from './StockSelector'
-import MyStocks from './MyStocks'
-import './Dashboard.css';
+import React, { Component } from 'react';
+import stocks from '../data';
+import StockTable from './StockTable';
+import Trade from './Trade';
+import SelectedStock from './SelectedStock';
+import TraderInfo from './TraderInfo';
+import PortfolioTable from './PortfolioTable';
 
-class Dashboard extends React.Component {
+const initialSelectedStock = {
+  name: 'AES Tietê (O)',
+  symbol: 'AESAY',
+  price: '10',
+};
+
+const initialPortfolio = {
+  AESAY: {
+    quantity: 100,
+    buyPrice: 8,
+    name: 'AES Tietê (O)',
+    price: 10,
+  },
+  BAK: {
+    quantity: 300,
+    buyPrice: 5,
+    name: 'Braskem (P)',
+    price: 10,
+  },
+};
+
+class Dashboard extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      quantGastar: 100,
-      ganhoAcumulado: '',
-      ganhoCart: '',
-      stockBought: [],
-    }
-    this.handleClick = this.handleClick.bind(this);
+      selectedStock: initialSelectedStock,
+      money: 10000,
+      portfolio: initialPortfolio,
+    };
   }
 
-  handleClick(obj) {
-    const { stockBought, quantGastar } = this.state;
-    if( quantGastar - obj.quantidade >= 0) {
-      this.setState({
-        stockBought: [...stockBought, obj],
-        quantGastar: quantGastar - obj.quantidade,
-      });
-    } else {
-      alert('Você não pode gastar mais do que 100%');
-    }
-  }
+  changeSelected = (stock) => {
+    this.setState({ selectedStock: stock });
+  };
 
   render() {
-    const { stocks } = this.props;
-    const { quantGastar, ganhoAcumulado, stockBought } = this.state;
-    console.log(this.state.stockBought);
-    return(
-      <div>
-        <div>{`Carteira: ${quantGastar} %`}</div>
-        <div>{`Ganho Acumulado: ${ganhoAcumulado} %`}</div>
-        <div className="dashboardContainer">
-          <StockSelector click={this.handleClick} stocks={stocks} />
-          <MyStocks stockBought={stockBought} />
+    return (
+      <div className="dashboard">
+        <TraderInfo money={this.state.money} />
+        <div className="dash-main">
+          <PortfolioTable portfolio={initialPortfolio} />
+          <SelectedStock selected={this.state.selectedStock} />
+          <Trade />
+          <StockTable stocks={stocks} select={this.changeSelected} />
         </div>
       </div>
-
-    )
+    );
   }
 }
 
