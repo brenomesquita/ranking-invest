@@ -114,7 +114,7 @@ export default class RegisterService extends Component {
     return (
       <div id="register">
         <form onSubmit={this.handleSubmit} noValidate>
-            {this.creatInputs("firstName", "First Name")}
+          {this.creatInputs("firstName", "First Name")}
           {this.creatInputs("lastName", "Last Name")}
           {this.creatInputs("email", "Email", "email")}
           {this.creatInputs("password", "Password", "password")}

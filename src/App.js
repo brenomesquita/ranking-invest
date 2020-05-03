@@ -1,22 +1,24 @@
 import React from 'react';
-import LoginRender from "./components/login/LoginRender.jsx";
+import Dashboard from './dashboard/Dashboard';
+import LoginService from "./components/login/LoginService";
+import RegisterService from "./components/login/RegisterService";
 import HomePage from "./components/homePage/HomePage";
 import {BrowserRouter, Route , Switch} from "react-router-dom";
-import UserLoged from "./components/loged/UserLoged.jsx";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/homePage" component={HomePage} />
-          <Route exact path="/loginRegister" component={LoginRender} />
-          <Route exact path="/loged" component={UserLoged} />
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/login" component={LoginService} />
+          <Route exact path="/register" component={RegisterService} />
+          <Route exact path="/loged" component={Dashboard} />
         </Switch>  
       </BrowserRouter>
-      
     </div>
-  );
-}
+  )
+}     
+
 
 export default App;

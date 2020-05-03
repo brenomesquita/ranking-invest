@@ -13,7 +13,7 @@ export default class UserLoged extends Component {
   }
   render() {
     if (this.state.redirect) {
-      return <Redirect push to="/homePage" />;
+      return <Redirect push to="/" />;
     }
     return (
       <div>
