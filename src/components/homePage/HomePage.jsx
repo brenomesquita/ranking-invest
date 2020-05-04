@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import './homePage.css';
+import Rankcreator from '../ranking/Rankcreator'
 
 export default class HomePage extends Component {
   constructor(props){
@@ -56,7 +57,7 @@ export default class HomePage extends Component {
           </section>
         </nav>
       </header>
-        
+        <Rankcreator />
       </div>
     )
   }
