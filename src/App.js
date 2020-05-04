@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import './App.css';
 import Dashboard from './components/dashboard/Dashboard';
 import LoginRender from "./components/login/LoginRender";
 import HomePage from "./components/homePage/HomePage";
@@ -8,7 +7,7 @@ import ProfileConsultor from './components/ranking/ProfileConsultor';
 
 function App() {
   return (
-    <div>
+    <div className="homepage-container">
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={HomePage} />
