@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Rank from './dataRank';
-import RankLine from './RankLine';
+import './ranking.css';
 
 class RankCreator extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class RankCreator extends React.Component {
 
   componentDidMount() {
     const { dataRank } = this.state;
-    this.setState({ dataRank: dataRank.filter((item) => (item.active)) });
+    this.setState({ dataRank: dataRank.filter((item) => item.active) });
   }
 
   riskRankChange(event, name) {
@@ -24,7 +24,7 @@ class RankCreator extends React.Component {
     const stateManager = Rank.filter((elem) => elem.risk === value);
     this.setState({
       [name]: value,
-      dataRank: (value === '') ? oldState : stateManager,
+      dataRank: value === '' ? oldState : stateManager,
     });
   }
 
@@ -43,20 +43,29 @@ class RankCreator extends React.Component {
             if (item === 'risk') {
               return (
                 <th key={item}>
-                  <select value={selectedrisk} onChange={(event) => this.riskRankChange(event, 'selectedrisk')}>
+                  <select
+                    value={selectedrisk}
+                    onChange={(event) =>
+                      this.riskRankChange(event, 'selectedrisk')
+                    }
+                  >
                     <option value="">Todos</option>
-                    <option value="high">Alto</option>
-                    <option value="medium">Médio</option>
-                    <option value="low">Baixo</option>
+                    <option value="Alto">Alto</option>
+                    <option value="Médio">Médio</option>
+                    <option value="Baixo">Baixo</option>
                   </select>
                 </th>
               );
             }
             if (index > 5) return null;
             if (item !== 'imagePath') {
-              return (<th key={item} onClick={() => this.filterRank(item)}>{item}</th>);
+              return (
+                <th key={item} onClick={() => this.filterRank(item)}>
+                  {item}
+                </th>
+              );
             }
-            return (<th key={item}>{null}</th>);
+            return <th key={item}>{null}</th>;
           })}
         </tr>
       </thead>
@@ -64,19 +73,16 @@ class RankCreator extends React.Component {
   }
 
   tdCreator(info) {
-    const { dataRank } = this.state;
-    return (
-      Object.values(info).map((body, index) => {
-        if (index < 6) {
-          return (
-            <th key={`${body} - ${Math.random()}`}>
-              <Link to={`/profile/${body.id}`}>{body}</Link>
-            </th>
-          );
-        }
-        return null;
-      })
-    );
+    return Object.values(info).map((body, index) => {
+      if (index < 6) {
+        return (
+          <th key={`${body} - ${Math.random()}`}>
+            <Link to={`/profile/${body.id}`}>{body}</Link>
+          </th>
+        );
+      }
+      return null;
+    });
   }
 
   TableBody() {
@@ -84,9 +90,7 @@ class RankCreator extends React.Component {
     return (
       <tbody>
         {dataRank.map((info) => (
-          <tr key={info.id}>
-            {this.tdCreator(info)}
-          </tr>
+          <tr key={info.id}>{this.tdCreator(info)}</tr>
         ))}
       </tbody>
     );
@@ -94,10 +98,13 @@ class RankCreator extends React.Component {
 
   render() {
     return (
-      <table>
-        {this.TableHead()}
-        {this.TableBody()}
-      </table>
+      <div>
+        <h1>Melhores Consultores de Investimento</h1>
+        <table className="rank-table">
+          {this.TableHead()}
+          {this.TableBody()}
+        </table>
+      </div>
     );
   }
 }
