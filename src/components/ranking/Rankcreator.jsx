@@ -1,21 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Rank from './dataRank';
-import RankLine from './RankLine';
 
 class RankCreator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       dataRank: Rank.sort((a, b) => b.porcentageMonth - a.porcentageMonth),
-      oldState: Rank,
+      oldState: null,
       selectedrisk: '',
     };
   }
 
   componentDidMount() {
     const { dataRank } = this.state;
-    this.setState({ dataRank: dataRank.filter((item) => (item.active)) });
+    this.setState({
+      dataRank: dataRank.filter((item) => (item.active)),
+      oldState: dataRank.filter((item) => (item.active)),
+    });
   }
 
   riskRankChange(event, name) {
@@ -38,12 +40,12 @@ class RankCreator extends React.Component {
     const arrKeys = Object.keys(dataRank[0]);
     return (
       <thead>
-        <tr>
+        <tr className="thead-css">
           {arrKeys.map((item, index) => {
             if (item === 'risk') {
               return (
-                <th key={item}>
-                  <select value={selectedrisk} onChange={(event) => this.riskRankChange(event, 'selectedrisk')}>
+                <th  key={item}>
+                  <select className="selectRisk-btn" value={selectedrisk} onChange={(event) => this.riskRankChange(event, 'selectedrisk')}>
                     <option value="">Todos</option>
                     <option value="high">Alto</option>
                     <option value="medium">Médio</option>
@@ -54,9 +56,9 @@ class RankCreator extends React.Component {
             }
             if (index > 5) return null;
             if (item !== 'imagePath') {
-              return (<th key={item} onClick={() => this.filterRank(item)}>{item}</th>);
+              return (<th  key={item} onClick={() => this.filterRank(item)}>{item}</th>);
             }
-            return (<th key={item}>{null}</th>);
+            return (<th  key={item}>{null}</th>);
           })}
         </tr>
       </thead>
@@ -69,7 +71,7 @@ class RankCreator extends React.Component {
       Object.values(info).map((body, index) => {
         if (index < 6) {
           return (
-            <th key={`${body} - ${Math.random()}`}>
+            <th className="th-investor" key={`${body} - ${Math.random()}`}>
               <Link to={`/profile/${body.id}`}>{body}</Link>
             </th>
           );
