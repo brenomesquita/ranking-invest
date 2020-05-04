@@ -39,7 +39,6 @@ export default class HomePage extends Component {
               <li><a onClick={this.handleOnClick}>Login</a></li>
               <li><a onClick={this.handleOnClick}>Register</a></li>
             </ul>
-            <h1>Ranking page</h1>
             <section className="navigation__social">
               <ul className="navigation__social-ul">
                 <li>
