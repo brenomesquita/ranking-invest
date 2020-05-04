@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Rank from './dataRank';
-import RankLine from './RankLine';
 
 class RankCreator extends React.Component {
   constructor(props) {
@@ -64,13 +63,14 @@ class RankCreator extends React.Component {
   }
 
   tdCreator(info) {
-    const { dataRank } = this.state;
     return (
       Object.values(info).map((body, index) => {
         if (index < 6) {
           return (
             <th key={`${body} - ${Math.random()}`}>
-              <Link to={`/profile/${body.id}`}>{body}</Link>
+              <Link to={{
+                pathname: `/profile/${info.name}/${info.porcentageMonth}/${info.porcentageWeek}/${info.porcentageday}/${info.risk}/${info.imagePath}`,
+              }}>{body}</Link>
             </th>
           );
         }
