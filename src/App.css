@@ -77,6 +77,15 @@ light green: #A3C4BC
   background-color: #999;
 }
 
+.homepage-container {
+  display: flex;
+}
+
+.ranking-container {
+  margin-top: 150px;
+  margin-right: 450px;
+}
+
 .form-wrapper {
   width: 400px;
   display: flex;

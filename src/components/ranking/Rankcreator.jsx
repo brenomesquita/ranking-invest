@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Rank from './dataRank';
+import RankLine from './RankLine';
 
 class RankCreator extends React.Component {
   constructor(props) {

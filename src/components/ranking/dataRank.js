@@ -1,6 +1,8 @@
+import React from 'react';
+
 const dataRank = [
   {
-    imagePath: 'images/image1.jpg',
+    imagePath: <img src="https://avatars2.githubusercontent.com/u/6098892?s=400&u=348dfadbcb7fb7d19011f437db3790cdef40add8&v=4" width="60px" />,
     name: 'Investidor 1',
     porcentageMonth: 5.0,
     porcentageWeek: 4.0,
@@ -10,7 +12,7 @@ const dataRank = [
     id: 100001,
   },
   {
-    imagePath: 'images/image2.jpg',
+    imagePath: <img src="https://avatars2.githubusercontent.com/u/6098892?s=400&u=348dfadbcb7fb7d19011f437db3790cdef40add8&v=4" width="60px" />,
     name: 'Investidor 2',
     porcentageMonth: 4.5,
     porcentageWeek: 4.5,
@@ -20,7 +22,7 @@ const dataRank = [
     id: 100002,
   },
   {
-    imagePath: 'images/image3.jpg',
+    imagePath: <img src="https://avatars2.githubusercontent.com/u/6098892?s=400&u=348dfadbcb7fb7d19011f437db3790cdef40add8&v=4" width="60px" />,
     name: 'Investidor 3',
     porcentageMonth: 4.0,
     porcentageWeek: 5.0,
@@ -30,7 +32,7 @@ const dataRank = [
     id: 100003,
   },
   {
-    imagePath: 'mages/image4.jpg',
+    imagePath: <img src="https://avatars2.githubusercontent.com/u/6098892?s=400&u=348dfadbcb7fb7d19011f437db3790cdef40add8&v=4" width="60px" />,
     name: 'Investidor 4',
     porcentageMonth: 3.5,
     porcentageWeek: 3.0,
@@ -40,7 +42,7 @@ const dataRank = [
     id: 100004,
   },
   {
-    imagePath: 'mages/image5.jpg',
+    imagePath: <img src="https://avatars2.githubusercontent.com/u/6098892?s=400&u=348dfadbcb7fb7d19011f437db3790cdef40add8&v=4" width="60px" />,
     name: 'Investidor 5',
     porcentageMonth: 3.0,
     porcentageWeek: 3.5,

@@ -4,7 +4,7 @@ import './App.css';
 import Dashboard from './components/dashboard/Dashboard';
 import LoginRender from "./components/login/LoginRender";
 import HomePage from "./components/homePage/HomePage";
-import ProfileConsultor from './componentes/ProfileConsultor';
+import ProfileConsultor from './components/ranking/ProfileConsultor';
 
 function App() {
   return (

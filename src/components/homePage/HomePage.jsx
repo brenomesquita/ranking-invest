@@ -24,40 +24,42 @@ export default class HomePage extends Component {
       return <Redirect push to="/loginRegister" />;
     }
     return (
-      <div>
-      <header className="header">
-        <nav className="navigation">
+      <div className="homepage-container">
+        <header className="header">
+          <nav className="navigation">
 
-          <section className={this.state.navigationIcon} onClick={()=>this.header()}>
-            <span className="topBar"></span>
-            <span className="middleBar"></span>
-            <span className="bottomBar"></span>
-          
+            <section className={this.state.navigationIcon} onClick={()=>this.header()}>
+              <span className="topBar"></span>
+              <span className="middleBar"></span>
+              <span className="bottomBar"></span>
+            
 
-          <ul className="navigation__ul">
-            <li><a onClick={this.handleOnClick}>Login</a></li>
-            <li><a onClick={this.handleOnClick}>Register</a></li>
-          </ul>
-<h1>Ranking page</h1>
-          <section className="navigation__social">
-            <ul className="navigation__social-ul">
-              <li>
-                <a href="" className="social-icon"></a>
-              </li>
-              <li>
-                <a href="" className="social-icon"></a>
-              </li>
-              <li>
-                <a href="" className="social-icon"></a>
-              </li>
-              <li>
-                <a href="" className="social-icon"></a>
-              </li>
-            </ul></section>
-          </section>
-        </nav>
-      </header>
-        <Rankcreator />
+            <ul className="navigation__ul">
+              <li><a onClick={this.handleOnClick}>Login</a></li>
+              <li><a onClick={this.handleOnClick}>Register</a></li>
+            </ul>
+            <h1>Ranking page</h1>
+            <section className="navigation__social">
+              <ul className="navigation__social-ul">
+                <li>
+                  <a href="" className="social-icon"></a>
+                </li>
+                <li>
+                  <a href="" className="social-icon"></a>
+                </li>
+                <li>
+                  <a href="" className="social-icon"></a>
+                </li>
+                <li>
+                  <a href="" className="social-icon"></a>
+                </li>
+              </ul></section>
+            </section>
+          </nav>
+        </header>
+        <div className="ranking-container">
+          <Rankcreator />
+        </div>
       </div>
     )
   }
