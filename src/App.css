@@ -6,7 +6,8 @@ dark green: #519E8A
 medium green: #7EB09B
 light green: #A3C4BC
 */
-.login{
+
+.login {
   margin-top: 100px;
   margin-right: auto;
   margin-left: auto;
@@ -14,13 +15,13 @@ light green: #A3C4BC
   transition: .5s;
 }
 
-.register{
+.register {
   left: 4050px;
   position: absolute;
   transition: .5s;
 }
 
-.toogle-btn{
+.toogle-btn {
   padding:10px 30px;
   cursor: pointer;
   background: transparent;
@@ -29,7 +30,7 @@ light green: #A3C4BC
   position: relative;
 }
 
-.form-box{
+.form-box {
   width: 450px;
   margin: auto;
   background: #fff;
@@ -37,7 +38,7 @@ light green: #A3C4BC
   overflow: hidden;
 }
 
-.button-box{
+.button-box {
   width: 220px;
   margin: 37.5px auto;
   position: relative;
@@ -45,7 +46,7 @@ light green: #A3C4BC
   border-radius: 30px;
 }
 
-.btn-change{
+.btn-change {
   top: 0;
   left: 0;
   position: absolute;
@@ -53,13 +54,13 @@ light green: #A3C4BC
   border-radius: 30px;
 }
 
-.checkbox{
+.checkbox {
   margin-left: auto;
   margin-right: auto;
   align-items: center;
 }
 
-.btn{
+.btn {
   top: 0;
   left: 0;
   background: linear-gradient(to right, #38d39f, #32be8f, #ffffff, #ffffff, #ffffff);
@@ -177,22 +178,22 @@ input.error {
 
 .createAccount button {
   display: block;
-	width: 100%;
-	height: 50px;
-	border-radius: 25px;
-	outline: none;
-	border: none;
-	background-image: linear-gradient(to right, #32be8f, #38d39f, #476A6F);
-	background-size: 200%;
-	font-size: 1.2rem;
-	color: #fff;
-	font-family: 'Poppins', sans-serif;
-	text-transform: uppercase;
-	margin: 1rem 0;
-	cursor: pointer;
-	transition: .5s;
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  outline: none;
+  border: none;
+  background-image: linear-gradient(to right, #32be8f, #38d39f, #476A6F);
+  background-size: 200%;
+  font-size: 1.2rem;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  margin: 1rem 0;
+  cursor: pointer;
+  transition: .5s;
 }
 
 .createAccount button:hover {
-background-position: right;
+  background-position: right;
 }
