@@ -88,10 +88,17 @@ class Dashboard extends Component {
     return (
       <div className="dashboard">
         <button className="btn-dashboard" onClick={this.handleOnClick}>log out</button>
+        <div className="trader-info">
+          <h1>{this.props.match.params.firstName} {this.props.match.params.lastName}</h1>
+          <p>Capital: R${this.state.money}</p>
+        </div>
         <div className="wrapper-dashboard">
           <div className="dashboard-wrapper">
-            <StockTable stocks={stocks} select={this.changeSelected} />
-            <PortfolioTable onSelectedToSell={this.onSelectedToSell} portfolio={portfolio} />
+            <StockTable
+            stocks={stocks}
+            select={this.changeSelected}
+            />
+            <PortfolioTable portfolio={initialPortfolio} />
           </div>
           <Trade selectedStock={selectedStock} onClickSell={this.clickToSell} onClickBuy={this.clickToBuy} />
           <SelectedStock selected={selectedStock} />
