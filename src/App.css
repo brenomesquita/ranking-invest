@@ -86,6 +86,23 @@ light green: #A3C4BC
   margin-right: 450px;
 }
 
+.thead-css {
+  border-right: 1px solid black;
+}
+
+.th-investor {
+  background-color: #38D39F;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.selectRisk-btn {
+  background-color: #38D39F;
+  border-radius: 10px;
+  width: 100px;
+  height: 30px;
+}
+
 .form-wrapper {
   width: 400px;
   display: flex;

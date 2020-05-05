@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import Rank from './dataRank';
 import './ranking.css';
 
+const arrNames = ['', 'Nome', 'Mês', 'Semana', 'Dia'];
+
 class RankCreator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       dataRank: Rank.sort((a, b) => b.porcentageMonth - a.porcentageMonth),
-      oldState: Rank,
+      oldState: null,
       selectedrisk: '',
     };
   }
@@ -38,7 +40,7 @@ class RankCreator extends React.Component {
     const arrKeys = Object.keys(dataRank[0]);
     return (
       <thead>
-        <tr>
+        <tr className="thead-css">
           {arrKeys.map((item, index) => {
             if (item === 'risk') {
               return (
@@ -61,7 +63,7 @@ class RankCreator extends React.Component {
             if (item !== 'imagePath') {
               return (
                 <th key={item} onClick={() => this.filterRank(item)}>
-                  {item}
+                  {arrNames[index]}
                 </th>
               );
             }
