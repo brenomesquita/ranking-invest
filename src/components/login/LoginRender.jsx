@@ -41,8 +41,8 @@ export default class App extends Component {
             <button type="button" className={this.state.register} onClick={()=>this.register(this.state)} className="toogle-btn">Register</button>
           </div>
         </div>
-        <Avatar className="img" />
-        <h1>{text}</h1>
+        <Avatar />
+        <h1 className="img">{text}</h1>
         {val}
         </div>
       </div>

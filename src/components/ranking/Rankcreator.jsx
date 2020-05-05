@@ -75,18 +75,21 @@ class RankCreator extends React.Component {
   }
 
   tdCreator(info) {
-    return Object.values(info).map((body, index) => {
-      if (index < 6) {
-        return (
-          <th key={`${body} - ${Math.random()}`}>
-            <Link to={`/profile/${body.id}`}>{body}</Link>
-          </th>
-        );
-      }
-      return null;
-    });
-  }
-
+    return (
+      Object.values(info).map((body, index) => {
+        if (index < 6) {
+          return (
+            <th key={`${body} - ${Math.random()}`}>
+              <Link to={{
+                pathname: `/profile/${info.name}/${info.porcentageMonth}/${info.porcentageWeek}/${info.porcentageday}/${info.risk}/${info.imagePath}`,
+              }}>{body}</Link>
+            </th>
+          );
+        }
+        return null;
+      })
+    );
+}
   TableBody() {
     const { dataRank } = this.state;
     return (

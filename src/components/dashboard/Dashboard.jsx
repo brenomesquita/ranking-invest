@@ -3,7 +3,6 @@ import stocks from './data';
 import StockTable from './StockTable';
 import Trade from './Trade';
 import SelectedStock from './SelectedStock';
-import TraderInfo from './TraderInfo';
 import PortfolioTable from './PortfolioTable';
 import { Redirect } from 'react-router';
 import './dashboard.css';
@@ -39,7 +38,8 @@ class Dashboard extends Component {
       selectedStockSell: '',
       money: 10000,
       portfolio: initialPortfolio,
-      redirect: false
+      redirect: false,
+      name: this.props.match.params.FirstName
     };
     this.clickToBuy = this.clickToBuy.bind(this);
     this.clickToSell = this.clickToSell.bind(this);
@@ -89,11 +89,17 @@ class Dashboard extends Component {
     return (
       <div className="dashboard">
         <button className="btn-dashboard" onClick={this.handleOnClick}>log out</button>
-        <TraderInfo money={money} />
+        <div className="trader-info">
+          <h1>{this.props.match.params.firstName} {this.props.match.params.lastName}</h1>
+          <p>Capital: R${this.state.money}</p>
+        </div>
         <div className="wrapper-dashboard">
           <div className="dashboard-wrapper">
-            <StockTable stocks={portfolio} select={this.changeSelected} />
-            <PortfolioTable onSelectedToSell={this.onSelectedToSell} portfolio={portfolio} />
+            <StockTable
+            stocks={stocks}
+            select={this.changeSelected}
+            />
+            <PortfolioTable portfolio={initialPortfolio} />
           </div>
           <Trade selectedStock={selectedStock} onClickSell={this.clickToSell} onClickBuy={this.clickToBuy} />
           <SelectedStock selected={selectedStock} />
