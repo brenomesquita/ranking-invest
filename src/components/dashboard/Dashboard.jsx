@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import stocks from '../../data';
+import stocks from './data';
 import StockTable from './StockTable';
 import Trade from './Trade';
 import SelectedStock from './SelectedStock';
-import TraderInfo from './TraderInfo';
 import PortfolioTable from './PortfolioTable';
 import { Redirect } from 'react-router';
 import './dashboard.css';
@@ -36,7 +35,8 @@ class Dashboard extends Component {
       selectedStock: initialSelectedStock,
       money: 10000,
       portfolio: initialPortfolio,
-      redirect: false
+      redirect: false,
+      name: this.props.match.params.FirstName
     };
   }
 
@@ -55,10 +55,16 @@ class Dashboard extends Component {
     return (
       <div className="dashboard">
         <button className="btn-dashboard" onClick={this.handleOnClick}>log out</button>
-        <TraderInfo money={this.state.money} />
+        <div className="trader-info">
+          <h1>{this.props.match.params.firstName} {this.props.match.params.lastName}</h1>
+          <p>Capital: R${this.state.money}</p>
+        </div>
         <div className="wrapper-dashboard">
           <div className="dashboard-wrapper">
-            <StockTable stocks={stocks} select={this.changeSelected} />
+            <StockTable
+            stocks={stocks}
+            select={this.changeSelected}
+            />
             <PortfolioTable portfolio={initialPortfolio} />
           </div>
           <Trade />

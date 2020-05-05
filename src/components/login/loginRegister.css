@@ -6,19 +6,20 @@ dark green: #519E8A
 medium green: #7EB09B
 light green: #A3C4BC
 */
+.login-texto{
+  text-align: end;
+}
 .login{
-  margin-top: 10px;
+  margin-top: 100px;
   margin-right: auto;
   margin-left: auto;
   position: absolute;
   transition: .5s;
-  
 }
 .register{
-  left: 10000px;
-  position: relative;
+  left: 4050px;
+  position: absolute;
   transition: .5s;
-  overflow: hidden;
 }
 .toogle-btn{
   padding:10px 30px;
@@ -27,6 +28,13 @@ light green: #A3C4BC
   border: 0;
   outline: none;
   position: relative;
+}
+
+.form-box{
+  width: 450px;
+  margin: auto;
+  background: #fff;
+  padding: 5px;
   overflow: hidden;
 }
 
@@ -36,7 +44,6 @@ light green: #A3C4BC
   position: relative;
   box-shadow: #111111;
   border-radius: 30px;
-  
 }
 .btn-change{
   top: 0;
@@ -50,7 +57,7 @@ light green: #A3C4BC
   margin-left: auto;
   margin-right: auto;
   align-items: center;
-  
+
 }
 
 .btn{
@@ -68,12 +75,11 @@ light green: #A3C4BC
   justify-content: center;
   align-items: center;
   background-color: #999;
-  padding: 5px;
-  overflow: hidden;
+
 }
 
 .form-wrapper {
-  width: 400px;
+  width: 500px;
   display: flex;
   flex-direction: column;
   padding: 0px 40px;
@@ -81,19 +87,17 @@ light green: #A3C4BC
   box-shadow: 0px 10px 100px #111;
   background-color: #ffffff;
   background-image: url(./img/wave.png);
-  background-size: 108.5%;
-  overflow: hidden;
+  background-size: 125%;
+
 }
 
 form {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  overflow: hidden;
 }
 
-h1 {
-  text-align: center;
+.img {
   width: 100%;
   color: #111;
   font-weight: lighter;
@@ -190,7 +194,6 @@ input.error {
 	cursor: pointer;
 	transition: .5s;
 }
-
 .createAccount button:hover {
-background-position: right;
+  background-position: right;
 }

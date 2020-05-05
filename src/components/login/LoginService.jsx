@@ -9,7 +9,6 @@ export default class LoginService extends Component {
         className=""
         name={classText}
         noValidate
-        //onChange={}
         />
       </div>
     )
