@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 
 class PortfolioTableLine extends Component {
   render() {
-    const { quantity, buyPrice , name, price} = this.props.stock[1];
+    const { quantity, code, buyPrice , name, price } = this.props.stock;
+    const {  onSelectedToSell } = this.props;
     return (
-      <tr>
+      <tr onClick={() => onSelectedToSell(code)}>
         <td>{name}</td>
-        <td>{this.props.stock[0]}</td>
+        <td>{code}</td>
         <td>{quantity}</td>
         <td>R${buyPrice}</td>
         <td>R${price}</td>

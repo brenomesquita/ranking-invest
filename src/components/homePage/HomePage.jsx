@@ -1,66 +1,52 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router';
 import './homePage.css';
-import Rankcreator from '../ranking/Rankcreator'
+import Rankcreator from '../ranking/Rankcreator';
+import LoginRender from '../login/LoginRender';
 
 export default class HomePage extends Component {
-  constructor(props){
-    super(props)
-    this.state={
-      navigationIcon: "navigation__icon",
-      redirect: false,
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      menuChecked: false,
+    };
   }
-  
-  handleOnClick = () => {
-    this.setState({redirect: true});
-  }
-  header = () => {
-    let { navigationIcon } =this.state
-    navigationIcon==="navigation__icon"? this.setState({navigationIcon:"navigation-open"}) : this.setState({navigationIcon:"navigation__icon"})
-  }
+
+  handleMenu = () => {
+    this.setState({
+      menuChecked: !this.state.menuChecked,
+    });    
+  };
+
   render() {
-    if (this.state.redirect) {
-      return <Redirect push to="/loginRegister" />;
-    }
-    return (
-      <div className="homepage-container">
-        <header className="header">
-          <nav className="navigation">
-
-            <section className={this.state.navigationIcon} onClick={()=>this.header()}>
-              <span className="topBar"></span>
-              <span className="middleBar"></span>
-              <span className="bottomBar"></span>
-            
-
-            <ul className="navigation__ul">
-              <li><a onClick={this.handleOnClick}>Login</a></li>
-              <li><a onClick={this.handleOnClick}>Register</a></li>
-            </ul>
-            <h1>Ranking page</h1>
-            <section className="navigation__social">
-              <ul className="navigation__social-ul">
-                <li>
-                  <a href="" className="social-icon"></a>
-                </li>
-                <li>
-                  <a href="" className="social-icon"></a>
-                </li>
-                <li>
-                  <a href="" className="social-icon"></a>
-                </li>
-                <li>
-                  <a href="" className="social-icon"></a>
-                </li>
-              </ul></section>
-            </section>
-          </nav>
-        </header>
+    if (!this.state.menuChecked) {
+      return (
         <div className="ranking-container">
+        <label htmlFor="menu-hamburguer">
+          <h1 className="login-texto">Login</h1>
+          <input id="menu-hamburguer" type="button" onClick={this.handleMenu} />
+          <div className="menu">
+            <span className="hamburguer"></span>
+          </div>
+        </label>
+        <div className="rank-container">
           <Rankcreator />
         </div>
       </div>
-    )
+      )
+    }
+    return (
+      <div className="ranking-container">
+        <label htmlFor="menu-hamburguer" className="pointer">
+          <h1 className="login-texto">Login</h1>
+          <input id="menu-hamburguer" type="button" onClick={this.handleMenu} />
+          <div className="login-x">
+            <span className="x"></span>
+          </div>
+        </label>
+        <div>
+          <LoginRender />
+        </div>
+      </div>
+    );
   }
 }

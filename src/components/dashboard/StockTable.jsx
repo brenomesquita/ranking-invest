@@ -21,7 +21,7 @@ class StockTable extends Component {
                 <StockTableLine
                   stock={stock}
                   select={select}
-                  key={stock.symbol}
+                  key={stock.code}
                 />
               ))}
             </tbody>
